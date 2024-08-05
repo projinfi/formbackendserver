@@ -8,6 +8,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Test route to check if server is running
+app.get('/submit-form', (req, res) => {
+  res.send('Server is up and running!');
+});
+
 app.post('/submit-form', (req, res) => {
   const userIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   console.log('User IP Address:', userIp);
