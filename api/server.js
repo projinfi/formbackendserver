@@ -13,6 +13,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
+
 // Test route to check if server is running
 app.get('/api', (req, res) => {
   res.send('Server is up and running!');
@@ -29,5 +30,5 @@ app.post('/submit-form', (req, res) => {
   res.json({ userIp });
 });
 
-module.exports = app;
-
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
