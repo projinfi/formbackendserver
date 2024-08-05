@@ -8,6 +8,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+
 // Test route to check if server is running
 app.get('/api', (req, res) => {
   res.send('Server is up and running!');
